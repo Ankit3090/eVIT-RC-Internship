@@ -1,0 +1,12 @@
+* C:\Users\Ankit Negi\OneDrive\Documents\hustle\Internship\VIT Chennai EV\Circuit\RC_Filter.asc
+R1 N002 N001 100
+R2 0 0 100
+C1 N002 0 100n
+C2 0 0 100n
+V1 N001 0 AC 1
+D1 0 N002 EDZV7_5B
+.model D D
+.lib C:\Users\Ankit Negi\OneDrive\Documents\LTspiceXVII\lib\cmp\standard.dio
+.ac dec 20 1 100k
+.backanno
+.end

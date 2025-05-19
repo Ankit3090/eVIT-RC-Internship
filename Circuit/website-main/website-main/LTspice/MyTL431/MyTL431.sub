@@ -1,0 +1,28 @@
+* My TL431 shunt regulator
+* By Marcos Alonso, marcos@uniovi.es
+* For Educational purpose only
+* July 2023
+*
+.subckt MyTL431 K A REF
+XU1 REF N004 N003 MyOpamp Ri= 10e6 Ro=1 Ao=750 FBW=1.5meg
+V1 N004 A 2.5
+D1 K N001 Diode1
+V2 N001 N002 2.5
+G1 N002 A N003 0 5m
+D2 A K Diode2
+.model Diode1 D(Ron=1m Roff=1meg Vfwd=1m Vrev=1k)
+.model Diode2 D(Ron=1m Roff=1meg Vfwd=1m Vrev=40)
+.ends MyTL431
+*
+* MyOpamp subcircuit
+*
+.subckt MyOpamp 1 2 3
+Ri 1 2 {Ri}
+E1 a 0 value={Ao*V(1,2)}
+R1 a b 1
+C1 b 0 {1/( 2*pi*1*(FBW/Ao) )}
+E2 c 0 value={v(b)}
+Ro c 3 {Ro}
+.ends MyOpamp
+
+
